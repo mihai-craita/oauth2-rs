@@ -2066,7 +2066,7 @@ where
     RE: Error + 'static,
     TE: ErrorResponse,
 {
-    if http_response.status_code != StatusCode::OK {
+    if http_response.status_code != StatusCode::OK && http_response.status_code != StatusCode::CREATED {
         let reason = http_response.body.as_slice();
         if reason.is_empty() {
             return Err(RequestTokenError::Other(
